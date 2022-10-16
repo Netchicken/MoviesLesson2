@@ -4,26 +4,19 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 import axios from "axios";
 import Popup from "./components/Popup";
-
 import { apiSearch } from "./Api";
 
 function App() {
-  // const [state, setState] = useState({
-  //   search: "",
-  //   results: [],
-  //   selected: {},
-  //   apiresults: [],
-  //   provider: [],
-  // });
+ 
 
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [selected, setSelected] = useState("");
-  const [apiresults, setApiresults] = useState([]);
+  // const [apiresults, setApiresults] = useState([]);
   const [provider, setProvider] = useState([]);
-
   const [apiResults, setApiResults] = useState([]);
 
+  //passed in to the search component
   const searchCall = async (event) => {
     if (event.key === "Enter") {
       apiSearch(search)
@@ -47,8 +40,7 @@ function App() {
     setSearch(event.target.value)
       return {search };
     };
-  };
-
+ 
   function openPopup(id) {
     const apiUrl = "https://www.omdbapi.com/?apikey=9189dcef";
     // console.log("openPopup ", id);
@@ -57,22 +49,17 @@ function App() {
     axios(searchUrl).then(({ data }) => {
       let result = data;
       console.log("openPopup search result", result);
-
-      // setstate.selected(result);
-      // providerTitle = result.Title;
-
-      setState((prevState) => {
-        return { ...prevState, selected: result };
+       
+        return { result };
       });
       // movieProviders(result.Title); //get the provider data for the movie selected
-    });
-  }
+    };
+  
 
   const closePopup = () => {
-    setState((prevState) => {
-      return { ...prevState, selected: {} };
-    });
-  };
+        return {  selected: {} };
+    };
+  // };
 
   return (
     <div className='App'>
@@ -84,11 +71,11 @@ function App() {
         <Search handleInput={handleInput} search={searchCall} />
         <Results resultData={apiResults} openPopup={openPopup} />
 
-        {typeof state.selected.Title != "undefined" ? ( //if its not equal to undefined show popup
+        {typeof selected.Title != "undefined" ? ( //if its not equal to undefined show popup
           <Popup
-            selected={state.selected}
+            selected={selected}
             closePopup={closePopup}
-            movieProviders={state.provider}
+            movieProviders={provider}
           /> //show popup
         ) : (
           false //otherwise show nothing

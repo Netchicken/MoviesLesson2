@@ -195,7 +195,7 @@ section {
 .popup .content .close:hover {
   background: #223343;
 }
-round-color: #282c34;
+/* round-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -203,7 +203,7 @@ round-color: #282c34;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
