@@ -9,7 +9,6 @@ import { apiSearch } from "./Api";
 function App() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(""); //shows the popup if true, otherwise closes it
-  // const [apiresults, setApiresults] = useState([]);
   const [apiResults, setApiResults] = useState([]);
 
   //passed in to the search component

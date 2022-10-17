@@ -1,5 +1,4 @@
 import React from "react";
-import Provider from "./Provider";
 
 function Popup({ selected, closePopup }) {
   // console.log("Popup title", selected.Title);
