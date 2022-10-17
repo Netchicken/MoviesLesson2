@@ -6,16 +6,9 @@ function Result({ result, openPopup }) {
   //console.log("Popup ID ", result.imdbID);
   return (
     <div className='result' onClick={() => openPopup(result.imdbID)}>
-      <div className='row'>
-        <div className='col'>
-          <img src={result.Poster} />
-        </div>
-        <div className='col'>
-          <h3>{result.Title}</h3>
-          <h3>{}</h3>
-          <h4>{result.Plot}</h4>
-        </div>
-      </div>
+      <img src={result.Poster} />
+      <h3>{result.Title}</h3>
+      <h4>{result.Plot}</h4>
     </div>
   );
 }
