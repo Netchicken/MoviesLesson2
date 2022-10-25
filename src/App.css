@@ -27,7 +27,7 @@ header h4 {
 }
 main {
   width: 100%;
-  max-width: 970px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -39,7 +39,7 @@ section {
   display: block;
   width: 100%;
   padding: 15px;
-
+  max-width: 990px;
   border: none;
   outline: none;
   background: none;
@@ -65,10 +65,21 @@ section {
 }
 /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 .results .result {
-  min-width: 250px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+   display: block;
+  max-width: 330px;
+  margin-inline: auto;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px 3px #4484c4;
+  /* background: #fff; */
+  transform-origin: center center;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+  color: black;
+  transform-origin: center center;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -82,47 +93,16 @@ section {
   font-size: 20px;
   font-weight: 600;
   padding: 10px;
-  background: #445565;
+  /* background: #445565; */
   flex: auto;
   transition: 0.4s ease-out;
 }
 
 .results .result:hover h3 {
-  background: #fff;
-  color: #223343;
+  background: #1e3a53;
+  color: #e0c74b9f;
 }
 
-.provider {
-  display: flex;
-  /* align-items: flex-start; */
-  flex-wrap: wrap;
-  /* margin: 0px -15px 30px; */
-}
-
-.provider a {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-  padding: 10px;
-}
-
-.provider img {
-  align-items: flex-start;
-}
-
-.box {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 0px 10px;
-  flex: 1 1 50%;
-  padding: 5px;
-  border-radius: 25px;
-  width: 50%;
-  height: 55px;
-  justify-content: flex-end;
-  border: 1px solid rgb(173, 187, 209);
-  box-sizing: border-box;
-}
 .popup {
   position: fixed;
   top: 0;
@@ -135,7 +115,7 @@ section {
 }
 
 .popup .content {
-  display: block;
+  /* display: block; */
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
@@ -165,9 +145,9 @@ section {
 
 .popup .content .plot img {
   align-self: flex-start;
-  /* flex: 1 1 50%; */
-  /* max-width: 300px; */
-  /* padding: 0px 15px; */
+  flex: 1 1 50%;
+  max-width: 300px;
+  padding: 0px 15px;
 }
 
 .popup .content .plot p {
