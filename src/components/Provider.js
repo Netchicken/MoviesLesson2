@@ -1,5 +1,5 @@
 import React from "react";
-
+//not used?
 function Provider({ result }) {
   return (
     <div className='provider'>

@@ -5,7 +5,7 @@ import React from "react";
 
 //onKeyPress={search} is only looking for the enter key press int eh search function
 
-function Search({ handleInput, search }) {
+const  Search = ({ handleInput, search }) => {
   return (
     <section className='searchbox-wrap'>
       <input type='text' placeholder='Search for a movie ... ' className='searchbox' onChange={handleInput} onKeyPress={search} />

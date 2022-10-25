@@ -4,17 +4,17 @@ import Search from "./components/Search";
 import Results from "./components/Results";
 import axios from "axios";
 import Popup from "./components/Popup";
-import { apiSearch } from "./Api";
+import { apiSearch, apiOpenPopup } from "./Utilities/Api";
 
 function App() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(""); //shows the popup if true, otherwise closes it
   const [apiResults, setApiResults] = useState([]);
 
-  //passed in to the search component
+  //passed in to the search component and triggered there
   const searchCall = async (event) => {
     if (event.key === "Enter") {
-      apiSearch(search)
+      apiSearch(search) //run the search from api.js
         .then((result) => {
           console.log("Api Search  from Api.js ", result);
           setApiResults(result);
@@ -33,19 +33,24 @@ function App() {
     return { search };
   };
 
-  function openPopup(id) {
-    const apiUrl = "https://www.omdbapi.com/?apikey=9189dcef";
-    console.log("openPopup ", id);
-    let searchUrl = apiUrl + "&i=" + id;
-    console.log("openPopup searchURL", searchUrl);
-    axios(searchUrl).then(({ data }) => {
-      let result = data;
-      console.log("openPopup search result", result);
-      setSelected(result);
-      return { selected };
-    });
-    // movieProviders(result.Title); //get the provider data for the movie selected
-  }
+  const openPopup = (id) => {
+      console.log("openPopupid ", id);
+   
+    apiOpenPopup(id) //run the search from api.js
+      .then((result) => {
+        console.log("apiOpenPopup  from Api.js ", result);
+        setSelected(result);
+      })
+      .catch((error) => {
+        console.log("apiOpenPopup error ", error);
+        return;
+      });
+    console.log("apiOpenPopup  ", selected);
+
+    return { selected };
+  };
+  // movieProviders(result.Title); //get the provider data for the movie selected
+  // }
 
   const closePopup = () => {
     setSelected("");
@@ -56,7 +61,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <h1>Movie Database</h1>
-        <h4>Click on a movie to see the plot</h4>
+        <h4>Search and then click on a movie to see the plot</h4>
       </header>
       <main>
         <Search handleInput={handleInput} search={searchCall} />
