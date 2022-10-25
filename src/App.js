@@ -34,8 +34,8 @@ function App() {
   };
 
   const openPopup = (id) => {
-      console.log("openPopupid ", id);
-   
+    console.log("openPopupid ", id);
+
     apiOpenPopup(id) //run the search from api.js
       .then((result) => {
         console.log("apiOpenPopup  from Api.js ", result);
@@ -49,9 +49,8 @@ function App() {
 
     return { selected };
   };
-  // movieProviders(result.Title); //get the provider data for the movie selected
-  // }
 
+  //controls the close button, clears selected state and so if statement doesn't run ... sneeky
   const closePopup = () => {
     setSelected("");
     return { selected };
@@ -64,9 +63,10 @@ function App() {
         <h4>Search and then click on a movie to see the plot</h4>
       </header>
       <main>
+        {/* just the search box */}
         <Search handleInput={handleInput} search={searchCall} />
+        {/*all the results*/}
         <Results resultData={apiResults} openPopup={openPopup} />
-
         {typeof selected.Title != "undefined" ? ( //if its not equal to undefined show popup
           <Popup selected={selected} closePopup={closePopup} /> //show popup
         ) : (
