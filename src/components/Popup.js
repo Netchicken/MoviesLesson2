@@ -1,8 +1,8 @@
 import React from "react";
 
-function Popup({ selected, closePopup }) {
-  // console.log("Popup title", selected.Title);
+//rafc
 
+export const Popup = ({ selected, closePopup }) => {
   return (
     <section className='popup'>
       <div className='content'>
@@ -23,4 +23,4 @@ function Popup({ selected, closePopup }) {
   );
 }
 
-export default Popup;
+

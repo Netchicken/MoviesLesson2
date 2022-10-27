@@ -1,18 +1,10 @@
 import React from "react";
-import Result from "./Result";
-
-//rfce
-
-//{data: {…}, status: 200, statusText: "OK", headers: {…}, config: {…}, …}
-//data:
-//Search: Array(10)
-//0: {Title: "The Big Lebowski", Year: "1998", imdbID: "tt0118715", Type: "movie", Poster: "https:/
-
-function Results({ resultData, openPopup }) {
-  // console.log("resultData ", resultData);
+import { Result } from "./Result";
+//rafc
+export const Results = ({ resultData, openPopup }) => {
   return (
     <section className='results'>
-      {typeof resultData != "undefined" ? ( //data not passing through
+      {typeof resultData != "undefined" ? ( //  "undefined"  data not passing through
         resultData.map((result) => (
           <Result key={result.imdbID} result={result} openPopup={openPopup} />
         ))
@@ -21,6 +13,4 @@ function Results({ resultData, openPopup }) {
       )}
     </section>
   );
-}
-
-export default Results;
+};

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import "./App.css";
-import Search from "./components/Search";
-import Results from "./components/Results";
-import axios from "axios";
-import Popup from "./components/Popup";
+import { Search } from "./components/Search";
+import { Results } from "./components/Results";
+import { Popup } from "./components/Popup";
 import { apiSearch, apiOpenPopup } from "./Utilities/Api";
 
 function App() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); //search term
   const [selected, setSelected] = useState(""); //shows the popup if true, otherwise closes it
-  const [apiResults, setApiResults] = useState([]);
+  const [apiResults, setApiResults] = useState([]); //results from the api
 
-  //passed in to the search component and triggered there
+  //pass in to the search component
+  //need async to get .then to work
   const searchCall = async (event) => {
     if (event.key === "Enter") {
       apiSearch(search) //run the search from api.js
@@ -29,8 +29,8 @@ function App() {
 
   //handleInput gets the value from the search box and passes it to state where its stored before pushing to the API above
   const handleInput = (event) => {
+    console.log("handleInput event", event.target.value);
     setSearch(event.target.value);
-    return { search };
   };
 
   const openPopup = (id) => {
@@ -57,16 +57,15 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <header className='App-header'>
+    <div>
+      <header>
         <h1>Movie Database</h1>
         <h4>Search and then click on a movie to see the plot</h4>
       </header>
       <main>
-        {/* just the search box */}
         <Search handleInput={handleInput} search={searchCall} />
-        {/*all the results*/}
         <Results resultData={apiResults} openPopup={openPopup} />
+        
         {typeof selected.Title != "undefined" ? ( //if its not equal to undefined show popup
           <Popup selected={selected} closePopup={closePopup} /> //show popup
         ) : (
